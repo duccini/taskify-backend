@@ -1,0 +1,29 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:15
+    restart: always
+    container_name: pg-db
+    environment:
+      POSTGRES_DB: tarefas
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+    ports:
+      - '5432:5432'
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+  nest-api:
+    build: .
+    container_name: nest-app
+    ports:
+      - '3000:3000'
+    volumes:
+      - .:/app
+    command: npm run start:dev
+    depends_on:
+      - postgres
+
+volumes:
+  pgdata:
