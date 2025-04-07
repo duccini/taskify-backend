@@ -2,6 +2,26 @@
 
 Este projeto roda uma API REST usando NestJS com Docker no modo desenvolvimento. A versão usada do node é `v20.19.0`
 
+## Funcionalidades
+
+- Autenticação com JWT:
+
+  - [x] POST /auth/register – Registro
+  - [x] POST /auth/login – Login
+
+- CRUD de Tarefas (autenticado):
+
+  - [x] GET /tasks – Listar
+  - [x] POST /tasks – Criar
+  - [x] DELETE /tasks/:id – Remover
+  - [x] PATCH /tasks/:id – Atualizar status
+  - [] PATCH /tasks/:id – Atualizar título
+
+- Requisitos técnicos:
+  - [x] Proteção de rotas autenticadas com JWT
+  - [x] Validação com class-validator
+  - [x] Banco de dados PostgreSQL usando Prisma ou TypeORM
+
 ## Pré-requisitos
 
 - Docker
@@ -24,7 +44,7 @@ cd <seu-repo>
 
 3. Criar um arquivo .env conforme arquivo .enxexample
 
-4.Construa e inicie o container:
+4. Construa e inicie o container:
 
 ```bash
 docker compose up --build
