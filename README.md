@@ -14,8 +14,8 @@ Este projeto roda uma API REST usando NestJS com Docker no modo desenvolvimento.
   - [x] GET /tasks – Listar
   - [x] POST /tasks – Criar
   - [x] DELETE /tasks/:id – Remover
-  - [x] PATCH /tasks/:id – Atualizar status
-  - [] PATCH /tasks/:id – Atualizar título
+  - [x] PATCH /tasks/:id/status – Atualizar status
+  - [x] PATCH /tasks/:id/title – Atualizar título
 
 - Requisitos técnicos:
   - [x] Proteção de rotas autenticadas com JWT

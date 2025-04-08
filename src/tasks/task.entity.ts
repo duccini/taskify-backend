@@ -4,6 +4,7 @@ import {
   Column,
   BaseEntity,
   ManyToOne,
+  CreateDateColumn,
 } from 'typeorm';
 import { TaskStatus } from './task-status.enum';
 import { User } from 'src/auth/user.entity';
@@ -17,8 +18,8 @@ export class Task extends BaseEntity {
   @Column()
   title: string;
 
-  @Column()
-  description: string;
+  @CreateDateColumn()
+  createdAt: Date;
 
   @Column()
   status: TaskStatus;

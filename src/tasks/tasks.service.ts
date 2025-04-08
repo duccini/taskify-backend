@@ -52,11 +52,10 @@ export class TasksService {
   }
 
   async createTask(createTaskDto: CreateTaskDto, user: User): Promise<Task> {
-    const { title, description } = createTaskDto;
+    const { title } = createTaskDto;
 
     const task = new Task();
     task.title = title;
-    task.description = description;
     task.status = TaskStatus.OPEN;
     task.user = user;
 
@@ -72,6 +71,15 @@ export class TasksService {
     if (result.affected === 0) {
       throw new NotFoundException(`Task with '${id}' not found`);
     }
+  }
+
+  async updateTaskTitle(id: number, title: string, user: User): Promise<Task> {
+    const task = await this.getTaskById(id, user);
+
+    task.title = title;
+    await task.save();
+
+    return task;
   }
 
   async updateTaskStatus(
